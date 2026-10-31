@@ -1,56 +1,53 @@
-# Welcome to your Expo app 👋
+# Uber Clone
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Flutter mobile application backed by Supabase.
 
-## Get started
+## Prerequisites
 
-1. Install dependencies
+- Flutter 3.35 or later
+- Dart 3.9 or later
+- A Supabase project
+
+## Setup
+
+1. Install Flutter and verify it with `flutter doctor`.
+2. Install dependencies:
 
    ```bash
-   npm install
+   flutter pub get
    ```
 
-2. Start the app
+3. Run the app with your Supabase project URL and publishable key:
 
    ```bash
-   npx expo start
+   flutter run \
+     --dart-define=SUPABASE_URL=https://your-project.supabase.co \
+     --dart-define=SUPABASE_PUBLISHABLE_KEY=your-publishable-key
    ```
 
-In the output, you'll find options to open the app in a
+   On PowerShell, use backticks for line continuation or keep the command on
+   one line.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+The app fails fast with a clear error if either Supabase value is missing.
+Never commit Supabase credentials; the publishable key is intended to be
+provided through the build environment.
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Project structure
 
-## Get a fresh project
+- `lib/main.dart` - Flutter entry point and Supabase initialization
+- `pubspec.yaml` - Flutter and Dart dependencies
+- `analysis_options.yaml` - Dart analyzer configuration
 
-When you're ready, run:
+## Development
 
 ```bash
-npm run reset-project
+flutter analyze
+flutter test
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+Once Flutter is installed, generate the platform folders for the targets you
+need with:
 
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+flutter create .
+```
